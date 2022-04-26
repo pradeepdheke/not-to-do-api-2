@@ -1,8 +1,12 @@
-const express = require('express');
-const res = require('express/lib/response');
+import express from 'express'
 const app = express();
 
 const PORT = 8000;
+app.use(express.json());
+
+// mongo connection
+import mongoClient from './src/config/db.js'
+mongoClient();
 
 // handlebar, ejs, ...
 app.get("/", (req, res)=>{
@@ -13,16 +17,11 @@ app.get("/", (req, res)=>{
    };
    res.json(person);
 });
+//
 
-// task api
-const taskFunc = (req, res) => {
-    
-    res.json({
-        message: "Hello world"
-    });
-}
-app.use("/api.v1/task", taskFunc)
-
+// load routers
+import taskRouter from './src/routers/taskRouter.js';
+app.use("/api/v1/task", taskRouter);
 
 app.listen(PORT, (error) => {
 
