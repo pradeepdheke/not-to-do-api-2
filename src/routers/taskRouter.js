@@ -1,7 +1,7 @@
 import express from 'express'
 const router = express.Router();
 
-import {getAllTask, getTask, insertTask} from '../models/task/TaskList.model.js'
+import {deleteTask, getAllTask, getTask, insertTask, updateTask} from '../models/task/TaskList.model.js'
 
 router.get("/:_id?", async (req, res) => {
     const {_id} = req.params;
@@ -26,10 +26,34 @@ router.post("", async (req, res) => {
         result,
     });
 });
+//updating task
+router.patch("/", async (req, res) => {
+    try {
+        const result = await updateTask(req.body);
+        console.log(result);
 
-router.delete("", (req, res) => {
+        res.json({
+            status: "success",
+            message: "the task has been updated",
+            result,
+        });
+    } catch(error) {
+        res.json({
+            status: "error",
+            message: error.message
+        })
+    }
+})
+
+router.delete("/:_id?", async (req, res) => {
+    const {_id} = req.params;
+    console.log(_id);
+
+    const result = await deleteTask(_id);
     res.json({
+        status: "success",
         message: "delete method",
+        result,
     });
     
 });

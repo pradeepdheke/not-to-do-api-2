@@ -3,7 +3,7 @@ GET http://localhost:8000
 
 
 ### get single or all task from server
-GET http://localhost:8000/api/v1/task/62675161d4f58e6cd390c401
+GET http://localhost:8000/api/v1/task/
 
 
 ### post task from server
@@ -16,5 +16,15 @@ Content-Type: application/json
 }
 
 
+### update task from server
+PATCH http://localhost:8000/api/v1/task/
+Content-Type: application/json
+
+{
+    "_id": "625510458f9bfaf6ace41767",
+    "task": "Programming"
+}
+
+
 ### delete task from server
-DELETE http://localhost:8000/api/v1/task
+DELETE http://localhost:8000/api/v1/task/6255106e8f9bfaf6ace41769

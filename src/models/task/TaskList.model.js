@@ -18,4 +18,12 @@ export const getTask = _id => {
     return TaskListSchema.findById(_id);
 }
 
+// patch data
+export const updateTask = ({_id, task}) => {
+    return TaskListSchema.findByIdAndUpdate(_id, {task}, {new: true});
+}
+
 // delete data
+export const deleteTask = _id => {
+    return TaskListSchema.findByIdAndDelete(_id);
+}
