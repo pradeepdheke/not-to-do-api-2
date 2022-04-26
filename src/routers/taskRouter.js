@@ -1,11 +1,17 @@
 import express from 'express'
 const router = express.Router();
 
-import {insertTask} from '../models/task/TaskList.model.js'
+import {getAllTask, getTask, insertTask} from '../models/task/TaskList.model.js'
 
-router.get("/", (req, res) => {
+router.get("/:_id?", async (req, res) => {
+    const {_id} = req.params;
+    console.log(_id);
+
+    const result = _id? await getTask(_id) : await getAllTask();
     res.json({
+        status: "success",
         message: "get method",
+        result,
     });
 });
 

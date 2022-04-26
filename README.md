@@ -6,14 +6,18 @@ Here is the link for frontend app ...
 
 
 ## APIS
-1. Task api endpoint
+
+### Task api
 All the task api will follow the following format `{rootUrl}/api/v1/task`
 
+| # | Method | Path | Description |
+| - | ------ | ---- | ----------- |
+| 1.| `GET` | `/` | Get all tasks |
+| 2.| `POST`|`/`| send a task obj to store in the database|
+| 3.|`DELETE`|`/{taskId}`| Delete the specific task |
 
-2. User api endpoint
+
+### User api
 All the user api will follow the following format `{rootUrl}/api/v1/user`
 
 
-// database connection
-// table schema
-// query over table/schema
